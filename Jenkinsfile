@@ -5,7 +5,7 @@ pipeline {
     }
 
     environment {
-        image = "salayut2013/demo-nodejs"
+        image = "salayut2013/nodejs"
         registry = "docker.io"
     }
 
@@ -36,7 +36,7 @@ pipeline {
                     docker.withRegistry('', 'dockerhub') {
                         def slackImage = docker.build("${env.image}:${BUILD_NUMBER}")
                         slackImage.push()
-                        slackImage.push('latest')
+                        slackImage.push('v1')
                     }
                 }
             }
